@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIASH - Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg: #383838;
+    --text: #fff;
+    --muted: #bbb;
+    --dark: #292929;
+    --light: #474747;
+}
+
+body.light {
+    --bg: #e5e7eb;
+    --text: #333;
+    --muted: #777;
+    --dark: #c5c7cb;
+    --light: #fff;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    transition: .3s;
+}
+
+/* Main Card */
+
+.card {
+    width: 100%;
+    max-width: 410px;
+    padding: 24px 32px;
+    border-radius: 28px;
+    border: 2px solid rgba(255,255,255,.45);
+
+    box-shadow:
+        9px 9px 20px var(--dark),
+        -9px -9px 20px var(--light);
+
+    animation: appear .6s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 9px 15px;
+    border-radius: 20px;
+    box-shadow: 3px 3px 7px var(--dark),
+                -3px -3px 7px var(--light);
+}
+
+.theme {
+    border: none;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Logo */
+
+.logo {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: 2px solid rgba(255,255,255,.65);
+
+    box-shadow: 5px 5px 12px var(--dark),
+                -5px -5px 12px var(--light);
+}
+
+/* Form */
+
+.form {
+    animation: slide .4s ease;
+}
+
+@keyframes slide {
+    from {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+h2 {
+    font-size: 23px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 11px;
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 23px;
+}
+
+.group {
+    margin-bottom: 19px;
+}
+
+.group label {
+    display: block;
+    font-size: 12px;
+    margin: 0 0 8px 12px;
+}
+
+.input-wrap {
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    height: 52px;
+    padding: 0 17px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 30px;
+    outline: none;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 12px;
+
+    box-shadow:
+        inset 2px 2px 5px var(--dark),
+        inset -2px -2px 5px var(--light);
+
+    transition: .3s;
+}
+
+.input:focus {
+    border-color: rgba(255,255,255,.4);
+    box-shadow: 0 0 10px rgba(255,255,255,.08);
+}
+
+.input::placeholder {
+    color: var(--muted);
+}
+
+.password {
+    padding-right: 65px;
+}
+
+.eye {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+/* Options */
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    margin: 5px 8px 22px;
+    gap: 8px;
+}
+
+.options a,
+.switch a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.remember {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+/* Button */
+
+.submit {
+    width: 100%;
+    height: 58px;
+    border: none;
+    border-radius: 30px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+
+    box-shadow: 5px 5px 12px var(--dark),
+                -5px -5px 12px var(--light);
+
+    transition: .3s;
+}
+
+.submit:hover {
+    transform: translateY(-2px);
+}
+
+.submit:active {
+    box-shadow: inset 3px 3px 6px var(--dark),
+                inset -3px -3px 6px var(--light);
+}
+
+/* Bottom */
+
+.message {
+    text-align: center;
+    font-size: 11px;
+    margin-top: 10px;
+    min-height: 16px;
+}
+
+.switch {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 23px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 18px;
+}
+
+/* Signup */
+
+#signupForm {
+    display: none;
+}
+
+#signupForm .group {
+    margin-bottom: 13px;
+}
+
+#signupForm .input {
+    height: 47px;
+}
+
+#signupForm .logo {
+    margin: 20px auto;
+}
+
+#signupForm h2 {
+    margin-top: 5px;
+}
+
+/* Responsive */
+
+@media(max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 20px 20px;
+        max-width: 380px;
+        border-radius: 23px;
+    }
+
+    .logo {
+        width: 75px;
+        height: 75px;
+        margin: 23px auto;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+}
+
+@media(max-height: 700px) and (min-width: 481px) {
+    body {
+        align-items: flex-start;
+    }
+
+    .card {
+        margin: 5px auto;
+        padding-top: 17px;
+        padding-bottom: 17px;
+    }
+
+    .logo {
+        margin: 15px auto;
+        width: 65px;
+        height: 65px;
+    }
+
+    .group {
+        margin-bottom: 13px;
+    }
+
+    .input {
+        height: 46px;
+    }
+
+    .subtitle {
+        margin-bottom: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="header">
+        <div class="brand">PIASH UI</div>
+        <button class="theme" onclick="toggleTheme()">
+            ☼ Dark / Light
+        </button>
+    </div>
+
+    <div class="logo">PIASH</div>
+
+    <!-- LOGIN FORM -->
+
+    <form id="loginForm" class="form">
+
+        <h2>Welcome Back!</h2>
+        <p class="subtitle">Login to your account</p>
+
+        <div class="group">
+            <label>Email or Username</label>
+            <input class="input" type="text"
+            placeholder="Enter email or username" required>
+        </div>
+
+        <div class="group">
+            <label>Password</label>
+            <div class="input-wrap">
+                <input class="input password"
+                type="password" id="loginPass"
+                placeholder="Enter password" required>
+                <span class="eye"
+                onclick="togglePass('loginPass',this)">SHOW</span>
+            </div>
+        </div>
+
+        <div class="options">
+            <label class="remember">
+                <input type="checkbox"> Remember me
+            </label>
+            <a href="#" onclick="forgot(event)">Forgot password?</a>
+        </div>
+
+        <button class="submit" type="submit">Log in</button>
+
+        <div class="message" id="loginMsg"></div>
+
+        <div class="switch">
+            Don't have an account?
+            <a href="#" onclick="showSignup(event)">Sign up</a>
+        </div>
+
+    </form>
+
+    <!-- SIGNUP FORM -->
+
+    <form id="signupForm" class="form">
+
+        <h2>Create Account</h2>
+        <p class="subtitle">Join PIASH today</p>
+
+        <div class="group">
+            <label>Full Name</label>
+            <input class="input" type="text"
+            placeholder="Enter full name" required>
+        </div>
+
+        <div class="group">
+            <label>Email Address</label>
+            <input class="input" type="email"
+            placeholder="Enter email" required>
+        </div>
+
+        <div class="group">
+            <label>Username</label>
+            <input class="input" type="text"
+            placeholder="Choose username" required>
+        </div>
+
+        <div class="group">
+            <label>Password</label>
+            <div class="input-wrap">
+                <input class="input password"
+                type="password" id="signupPass"
+                placeholder="Create password" required>
+                <span class="eye"
+                onclick="togglePass('signupPass',this)">SHOW</span>
+            </div>
+        </div>
+
+        <div class="group">
+            <label>Confirm Password</label>
+            <div class="input-wrap">
+                <input class="input password"
+                type="password" id="confirmPass"
+                placeholder="Confirm password" required>
+                <span class="eye"
+                onclick="togglePass('confirmPass',this)">SHOW</span>
+            </div>
+        </div>
+
+        <button class="submit" type="submit">
+            Create Account
+        </button>
+
+        <div class="message" id="signupMsg"></div>
+
+        <div class="switch">
+            Already have an account?
+            <a href="#" onclick="showLogin(event)">Login</a>
+        </div>
+
+    </form>
+
+    <div class="footer">
+        © 2026 PIASH. All Rights Reserved.
+    </div>
+
+</div>
+
+<script>
+
+// Form switching
+
+const login = document.getElementById("loginForm");
+const signup = document.getElementById("signupForm");
+
+function showSignup(e) {
+    e.preventDefault();
+    login.style.display = "none";
+    signup.style.display = "block";
+    signup.style.animation = "none";
+    void signup.offsetWidth;
+    signup.style.animation = "slide .4s ease";
+    clearMessages();
+}
+
+function showLogin(e) {
+    e.preventDefault();
+    signup.style.display = "none";
+    login.style.display = "block";
+    login.style.animation = "none";
+    void login.offsetWidth;
+    login.style.animation = "slide .4s ease";
+    clearMessages();
+}
+
+function clearMessages() {
+    document.getElementById("loginMsg").textContent = "";
+    document.getElementById("signupMsg").textContent = "";
+}
+
+// Password visibility
+
+function togglePass(id, el) {
+    const input = document.getElementById(id);
+
+    if(input.type === "password") {
+        input.type = "text";
+        el.textContent = "HIDE";
+    } else {
+        input.type = "password";
+        el.textContent = "SHOW";
+    }
+}
+
+// Theme
+
+function toggleTheme() {
+    document.body.classList.toggle("light");
+}
+
+// Login validation
+
+login.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const password = document.getElementById("loginPass").value;
+    const msg = document.getElementById("loginMsg");
+
+    if(password.length < 6) {
+        msg.style.color = "#ff7777";
+        msg.textContent = "Password must be at least 6 characters.";
+        return;
+    }
+
+    msg.style.color = "var(--text)";
+    msg.textContent = "Demo only. Backend authentication required.";
+});
+
+// Signup validation
+
+signup.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const password = document.getElementById("signupPass").value;
+    const confirm = document.getElementById("confirmPass").value;
+    const msg = document.getElementById("signupMsg");
+
+    if(password.length < 6) {
+        msg.style.color = "#ff7777";
+        msg.textContent = "Password must be at least 6 characters.";
+        return;
+    }
+
+    if(password !== confirm) {
+        msg.style.color = "#ff7777";
+        msg.textContent = "Passwords do not match!";
+        return;
+    }
+
+    msg.style.color = "var(--text)";
+    msg.textContent = "Demo only. Backend registration required.";
+});
+
+// Forgot password
+
+function forgot(e) {
+    e.preventDefault();
+    alert("Password recovery requires backend integration.");
+}
+
+</script>
+
+</body>
+</html>
